@@ -13,7 +13,7 @@
             height: 100vh;
             background-color: #ff0000; /* Red background */
             color: #ff69b4; /* Pink text color */
-            font-family: Arial, sans-serif; /* Change to a simple, widely available font */
+            font-family: Arial, sans-serif; /* Simple font */
             font-size: 32px; /* Larger font size */
         }
         button {
@@ -46,13 +46,19 @@
         const noButton = document.getElementById("noButton");
         const yesButton = document.getElementById("yesButton");
         const message = document.getElementById("message");
+        let noTries = 0;
 
         noButton.addEventListener("mouseover", function() {
-            const x = Math.floor(Math.random() * (window.innerWidth - 100));
-            const y = Math.floor(Math.random() * (window.innerHeight - 100));
-            noButton.style.position = "absolute";
-            noButton.style.left = x + "px";
-            noButton.style.top = y + "px";
+            noTries++;
+            if (noTries >= 10) {
+                noButton.style.display = "none"; // Hide the "No" button after 10 tries
+            } else {
+                const x = Math.floor(Math.random() * (window.innerWidth - 100));
+                const y = Math.floor(Math.random() * (window.innerHeight - 100));
+                noButton.style.position = "absolute";
+                noButton.style.left = x + "px";
+                noButton.style.top = y + "px";
+            }
         });
 
         yesButton.addEventListener("click", function() {
